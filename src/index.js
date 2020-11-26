@@ -11,12 +11,37 @@ import ReactDom from 'react-dom';
 
 const messages = ['Hi!', 'How are you?', "I'm fine, thanks."];
 
-const Message = (props) => <div>{ props.text }</div>;
+const App = (props) => {
+    return (
+    <div>
+        <MessageList messages={ messages } />
+        <SendMessageButton />
+    </div>
+    )
+};
+
 const MessageList = (props) => {
     return props.messages.map((message) => <Message text={ message } />)
 };
+const Message = (props) => <div>{ props.text }</div>;
 
-ReactDom.render(
-    <MessageList messages={ messages } />,
-    document.getElementById('root'),
-);
+const SendMessageButton = (props) => {
+    return <button
+    onClick={ sendNewMessage }
+    >Click Me!</button>
+};
+
+function sendNewMessage() {
+    messages.push("I'm a new message!");
+    console.log(messages);
+    render();
+};
+
+function render() {
+    ReactDom.render(
+        <App />,
+        document.getElementById('root'),
+    );
+};
+
+render();
