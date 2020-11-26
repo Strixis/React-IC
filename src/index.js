@@ -21,7 +21,11 @@ const App = (props) => {
 };
 
 const MessageList = (props) => {
-    return props.messages.map((message) => <Message text={ message } />)
+    let key = 0;
+    return props.messages.map((message) => {
+        key += 1;
+        return <Message key={ key } text={ message } />
+    });
 };
 const Message = (props) => <div>{ props.text }</div>;
 
@@ -33,7 +37,6 @@ const SendMessageButton = (props) => {
 
 function sendNewMessage() {
     messages.push("I'm a new message!");
-    console.log(messages);
     render();
 };
 
