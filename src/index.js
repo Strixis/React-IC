@@ -21,11 +21,7 @@ const App = (props) => {
 };
 
 const MessageList = (props) => {
-    let key = 0;
-    return props.messages.map((message) => {
-        key += 1;
-        return <Message key={ key } text={ message } />
-    });
+    return props.messages.map((message, index) => <Message key={ index } text={ message } />)
 };
 const Message = (props) => <div>{ props.text }</div>;
 
