@@ -1,4 +1,4 @@
-import React, { createElement } from 'react';
+import React from 'react';
 import ReactDom from 'react-dom';
 
 const messages = ['Hi!', 'How are you?', "I'm fine, thanks."];
