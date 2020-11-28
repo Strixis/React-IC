@@ -10,12 +10,12 @@ class Messanger extends Component {
   }
 
   componentDidUpdate() {
-    const author = this.state.messages[this.state.messages.length - 1].author;
+    const message = this.state.messages[this.state.messages.length - 1];
 
-    if (author !== 'Bot') {
+    if (message.author !== 'Bot') {
       setTimeout(() => {
         this.setState({
-          messages: this.state.messages.concat(Bot.getAnswer(author)),
+          messages: this.state.messages.concat(Bot.getAnswer(message)),
         })
       }, 1000);
     }
