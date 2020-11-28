@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { MessagesList } from './MessagesList';
 import { MessageField } from './MessageField';
+import { Bot } from './Bot';
 
 class Messanger extends Component {
   state = {
@@ -10,13 +11,11 @@ class Messanger extends Component {
 
   componentDidUpdate() {
     const author = this.state.messages[this.state.messages.length - 1].author;
+
     if (author !== 'Bot') {
       setTimeout(() => {
         this.setState({
-          messages: this.state.messages.concat([{
-            text: `Hello from Bot, ${ author }!`,
-            author: 'Bot',
-          }]),
+          messages: this.state.messages.concat(Bot.getAnswer(author)),
         })
       }, 1000);
     }
