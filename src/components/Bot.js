@@ -1,37 +1,46 @@
 class Bot {
-  static answers = {
-    'greetings': ['Hello', 'Hi', 'Hallo']
-  };
-  static questions = {
-    greetings: /\b(hi)+|(hello)+|(hall?o)+\b/ig,
-  };
-  static defaultMessage = 'я тебя пока не понимаю =(';
+  static user = ''
 
   static getAnswer(message) {
-    const author = 'Bot';
-
-    let answerType = this._getAnswerType(message.text);
-
-    if (!answerType) {
-      return [{author, text: `${ message.author }, ${ this.defaultMessage }`}];
-    }
-
-    const answer = this.answers[answerType][
-      Math.floor(Math.random() * Math.floor(this.answers.greetings.length))
-    ];
+    this.user = message.author;
     
-    const text = `${ answer }, ${ message.author }!`;
-  
+    const author = 'Bot';
+    let text = this._getDefaultMessage();
+    const answers = this._getKnowledge();
+
+    for (let [key, value] of answers) {
+      key.lastIndex = 0;
+      if (key.test(message.text)) {
+        text = value[Math.floor(Math.random() * Math.floor(value.length))];
+        return [{ author, text }];
+      }
+    }
     return [{ author, text }];
   }
 
-  static _getAnswerType(text) {
-    for (let key in this.questions) {
-      this.questions[key].lastIndex = 0;
-      if (this.questions[key].test(text)) {
-        return key;
-      }
-    }
+  static _getDefaultMessage() {
+    return `${ this.user }, я тебя пока не понимаю =(`;
+  }
+
+  static _getKnowledge() {
+    return new Map([
+      [
+        /\b(hi)+|(hello)+|(hall?o)+\b/ig,
+        [
+          `Hello, ${ this.user }.`,
+          `Hi, ${ this.user }!`,
+          `Hallo, ${ this.user }!`
+        ]
+      ],
+      [
+        /123/,
+        [
+          `Один, два, три ${ this.user } =)`,
+          `1, 2, 3 и ${ this.user }!`,
+          `Три, два, один!`
+        ]
+      ]
+    ]);
   }
 };
 

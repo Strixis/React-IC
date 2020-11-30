@@ -5,6 +5,7 @@ class MessageField extends Component {
   state = {
     author: '',
     text: '',
+    isValid: true,
   }
 
   static propTypes = {
@@ -12,11 +13,16 @@ class MessageField extends Component {
   }
 
   handleMessageSend = () => {
-    const { onSend } = this.props;
-    if (typeof onSend === 'function') {
-      onSend(this.state);
+    if (this.state.author.match(/^\s*\S/) && this.state.text.match(/^\s*\S/)) {
+      const { onSend } = this.props;
 
-      this.setState({ text: '' });
+      if (typeof onSend === 'function') {
+        onSend({ author: this.state.author, text: this.state.text });
+
+        this.setState({ text: '', isValid: true });
+      }
+    } else {
+      this.setState({ isValid: false });
     }
   }
 
@@ -29,10 +35,11 @@ class MessageField extends Component {
   }
 
   render() {
-    const { author, text } = this.state;
+    const { author, text, isValid } = this.state;
     
     return (
       <div>
+        { !isValid && <p>Поля не должны быть пустыми!</p> }
         <input name="author" onChange={ this.handleInputChange } type="text" placeholder="Name" value={ author }/><br/>
         <textarea name="text" onChange={ this.handleInputChange } placeholder="Enter text" value={ text }></textarea><br/>
         <button onClick={ this.handleMessageSend }>Send</button>
