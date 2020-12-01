@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import { MessagesList } from './MessagesList';
-import { MessageField } from './MessageField';
-import { Bot } from './Bot';
+import { MessagesList } from 'components/MessageList';
+import { MessageField } from 'components/MessageField';
+import { Bot } from 'components/Bot';
 
 class Messanger extends Component {
   state = {
@@ -21,7 +21,7 @@ class Messanger extends Component {
     }
   }
 
-  handleMessageSend = (message) => {
+  handleMessageSend = (message) => {z
     this.setState(({ messages }) => ({ messages: messages.concat([message]) }))
   }
 
