@@ -22,9 +22,7 @@ class Messanger extends Component {
   }
 
   handleMessageSend = (message) => {
-    this.setState({
-      messages: this.state.messages.concat([message]),
-    })
+    this.setState(({ messages }) => ({ messages: messages.concat([message]) }))
   }
 
   render() {

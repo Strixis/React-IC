@@ -1,3 +1,5 @@
+import './Message.less';
+
 import React, { Component } from 'react';
 import PropType from 'prop-types';
 
@@ -10,7 +12,7 @@ class Message extends Component {
   render() {
     const { author, text } = this.props;
 
-    return <li>{ author }: { text }</li>
+    return <li className='message'>{ author }: { text }</li>
   }
 };
 
