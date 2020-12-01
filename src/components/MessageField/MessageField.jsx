@@ -34,6 +34,12 @@ class MessageField extends Component {
     });
   }
 
+  handleEnterDown = (event) => {
+    if (event.ctrlKey && event.keyCode === 13) {
+      this.handleMessageSend();
+    }
+  }
+
   render() {
     const { author, text, isValid } = this.state;
     
@@ -41,7 +47,7 @@ class MessageField extends Component {
       <div>
         { !isValid && <p>Поля не должны быть пустыми!</p> }
         <input name="author" onChange={ this.handleInputChange } type="text" placeholder="Name" value={ author }/><br/>
-        <textarea name="text" onChange={ this.handleInputChange } placeholder="Enter text" value={ text }></textarea><br/>
+        <textarea name="text" onChange={ this.handleInputChange } onKeyDown={ this.handleEnterDown } placeholder="Enter text" value={ text }></textarea><br/>
         <button onClick={ this.handleMessageSend }>Send</button>
       </div>
     )
