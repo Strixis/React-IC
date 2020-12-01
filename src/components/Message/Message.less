@@ -1,5 +1,25 @@
-@color: aliceblue;
-
 .message {
-    background-color: @color;
+  background-color: aliceblue;
+  padding: 5px 15px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  font-size: 18px;
+  min-width: 25%;
+  margin: 5px;
+
+  &_owner {
+    align-self: flex-end;
+  }
+  &_companion {
+    align-self: flex-start;
+  }
+
+  &_author,
+  &_text {
+    display: block;
+  }
+  &_author {
+    color: chocolate;
+    font-size: 16px;
+  }
 }

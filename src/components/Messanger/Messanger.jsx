@@ -1,3 +1,5 @@
+import './Messanger.less';
+
 import React, { Component } from 'react';
 
 import { MessagesList } from 'components/MessageList';
@@ -21,7 +23,7 @@ class Messanger extends Component {
     }
   }
 
-  handleMessageSend = (message) => {z
+  handleMessageSend = (message) => {
     this.setState(({ messages }) => ({ messages: messages.concat([message]) }))
   }
 
@@ -29,7 +31,7 @@ class Messanger extends Component {
     const { messages } = this.state;
 
     return (
-      <div>
+      <div className="messanger">
         <MessagesList messages={ messages }/>
         <MessageField onSend={ this.handleMessageSend } />
       </div>

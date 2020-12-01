@@ -1,3 +1,5 @@
+import './MessagesList.less';
+
 import React, { Component } from 'react';
 import PropType from 'prop-types';
 
@@ -12,7 +14,7 @@ class MessagesList extends Component {
     const { messages } = this.props;
 
     return (
-      <ul>
+      <ul className="messages-list">
         { messages.map((message, index) => {
             return (
               <Message key={ index } author={ message.author } text={ message.text } />
