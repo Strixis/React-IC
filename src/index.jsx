@@ -2,8 +2,10 @@ import React from 'react';
 import ReactDom from 'react-dom';
 
 import { Messanger } from 'components/Messanger';
+import { Layout } from 'components/Layout';
 
 ReactDom.render(
-  <Messanger />,
+  <Layout />,
+  // <Messanger />,
   document.getElementById('root'),
 );
