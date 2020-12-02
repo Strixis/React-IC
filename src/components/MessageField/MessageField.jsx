@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import PropType from 'prop-types';
+import Button from '@material-ui/core/Button';
+import SendIcon from '@material-ui/icons/Send';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import { themeButton } from 'assets/themes';
+import { ThemeProvider } from '@material-ui/core';
 
 class MessageField extends Component {
   state = {
@@ -44,12 +50,38 @@ class MessageField extends Component {
     const { author, text, isValid } = this.state;
     
     return (
-      <div>
+      <Grid container
+        direction="column"
+        justify="center"
+        alignItems="center"
+      >
         { !isValid && <p>Поля не должны быть пустыми!</p> }
-        <input name="author" onChange={ this.handleInputChange } type="text" placeholder="Name" value={ author }/><br/>
-        <textarea name="text" onChange={ this.handleInputChange } onKeyDown={ this.handleEnterDown } placeholder="Enter text" value={ text }></textarea><br/>
-        <button onClick={ this.handleMessageSend }>Send</button>
-      </div>
+        <ThemeProvider theme={ themeButton }>
+          <TextField variant='outlined'
+            style={{ margin: '5px' }}
+            name="author"
+            onChange={ this.handleInputChange }
+            type="text" placeholder="Name"
+            value={ author }
+          />
+          <TextField variant='outlined'
+            style={{ margin: '5px' }}
+            name="text"
+            onChange={ this.handleInputChange }
+            onKeyDown={ this.handleEnterDown }
+            placeholder="Enter text"
+            value={ text }
+          />
+          <Button onClick={ this.handleMessageSend }
+            style={{ margin: '5px' }}
+            variant="contained"
+            color="primary"
+            endIcon={<SendIcon/>}
+          >
+            Send
+          </Button>
+        </ThemeProvider>
+      </Grid>
     )
   }
 };
