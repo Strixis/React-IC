@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import SendIcon from '@material-ui/icons/Send';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import { themeButton } from 'assets/themes';
+import { themeGreen } from 'assets/themes';
 import { ThemeProvider } from '@material-ui/core';
 
 class MessageField extends Component {
@@ -56,7 +56,7 @@ class MessageField extends Component {
         alignItems="center"
       >
         { !isValid && <p>Поля не должны быть пустыми!</p> }
-        <ThemeProvider theme={ themeButton }>
+        <ThemeProvider theme={ themeGreen }>
           <TextField variant='outlined'
             style={{ margin: '5px' }}
             name="author"
