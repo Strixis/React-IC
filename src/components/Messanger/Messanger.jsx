@@ -8,32 +8,91 @@ import { Bot } from 'components/Bot';
 
 class Messanger extends Component {
   state = {
-    messages: [],
+    chats: {
+      '1': {
+        id: 1,
+        name: 'Chat 1',
+        messages: [
+          {
+            author: 'Bot',
+            text: 'This is chat 1.',
+          }
+        ],
+      },
+      '2': {
+        id: 2,
+        name: 'Chat 2',
+        messages: [
+          {
+            author: 'Bot',
+            text: 'This is chat 2.',
+          }
+        ],
+      },
+      '3': {
+        id: 3,
+        name: 'Chat 3',
+        messages: [
+          {
+            author: 'Bot',
+            text: 'This is chat 3.',
+          }
+        ],
+      },
+    }
   }
 
   componentDidUpdate() {
-    const message = this.state.messages[this.state.messages.length - 1];
+    if (this.messages) {
+      const message = this.messages[this.messages.length - 1];
 
-    if (message.author !== 'Bot') {
-      setTimeout(() => {
-        this.setState({
-          messages: this.state.messages.concat(Bot.getAnswer(message)),
-        })
-      }, 1000);
+      if (message.author !== 'Bot') {
+        setTimeout(() => {
+          this.handleMessageSend(Bot.getAnswer(message))
+          /* this.setState({
+            messages: this.messages.concat(Bot.getAnswer(message)),
+          }) */
+        }, 1000);
+      }
     }
   }
 
   handleMessageSend = (message) => {
-    this.setState(({ messages }) => ({ messages: messages.concat([message]) }))
+    const { chatId } = this.props;
+    const { chats } = this.state;
+
+    const chat = chats[chatId];
+    const messages = this.messages.concat([message]);
+    chat.messages = messages;
+
+    this.setState({
+      chats: {
+        ...this.state.chats,
+        [chatId]: chat,
+      }
+    })
+  }
+
+  get messages() {
+    const { chats } = this.state;
+    const { chatId } = this.props;
+    
+    let messages = null;
+
+    if (chatId && chats[chatId]) {
+      messages = chats[chatId].messages;
+    }
+
+    return messages;
   }
 
   render() {
-    const { messages } = this.state;
+    // const { messages } = this.state;
 
     return (
       <div className="messanger">
-        <MessagesList messages={ messages }/>
-        <MessageField onSend={ this.handleMessageSend } />
+        { this.messages ? <MessagesList messages={ this.messages }/> : <p>Выберите чат.</p> }
+        { this.messages && <MessageField onSend={ this.handleMessageSend } /> }
       </div>
     )
   }

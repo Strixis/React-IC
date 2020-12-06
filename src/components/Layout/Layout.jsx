@@ -12,7 +12,7 @@ render() {
       <Header />
       <div className="chat-space">
         <ChatList />
-        <Messanger />
+        <Messanger chatId={ this.props.match.params.id } />
       </div>
     </div>
   )
