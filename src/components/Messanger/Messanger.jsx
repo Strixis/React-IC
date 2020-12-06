@@ -44,22 +44,33 @@ class Messanger extends Component {
 
   componentDidUpdate() {
     if (this.messages) {
-      const message = this.messages[this.messages.length - 1];
+      const { chats } = this.state;
+      const { chatId } = this.props;
+
+      const chat = chats[chatId];
+
+      const messages = this.messages;
+      const message = messages[messages.length - 1];
 
       if (message.author !== 'Bot') {
         setTimeout(() => {
-          this.handleMessageSend(Bot.getAnswer(message))
-          /* this.setState({
-            messages: this.messages.concat(Bot.getAnswer(message)),
-          }) */
+          chat.messages = messages.concat(Bot.getAnswer(message));
+          console.log(chat.messages);
+
+          this.setState({
+            chats: {
+              ...this.state.chats,
+              [chatId]: chat,
+            }
+          })
         }, 1000);
       }
     }
   }
 
   handleMessageSend = (message) => {
-    const { chatId } = this.props;
     const { chats } = this.state;
+    const { chatId } = this.props;
 
     const chat = chats[chatId];
     const messages = this.messages.concat([message]);
@@ -87,8 +98,6 @@ class Messanger extends Component {
   }
 
   render() {
-    // const { messages } = this.state;
-
     return (
       <div className="messanger">
         { this.messages ? <MessagesList messages={ this.messages }/> : <p>Выберите чат.</p> }
