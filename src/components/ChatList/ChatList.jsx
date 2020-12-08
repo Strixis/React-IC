@@ -1,13 +1,38 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropType from 'prop-types';
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
 class ChatList extends Component {
+  static propTypes = {
+    newChat: PropType.func,
+    chats: PropType.array,
+  }
+
   render() {
+    const { chats } = this.props;
+    const { newChat } = this.props;
+
     return (
+      <div>
+        <List>
+          { chats.map((chat) => {
+            return (
+              <Link to={ `/chats/${ chat.id }` } key={ chat.id }>
+                <ListItem>
+                  <ListItemText primary={ chat.name } />
+                </ListItem>
+              </Link>
+            )
+          })}
+        </List>
+        <button onClick={ newChat }>New chat</button>
+      </div>
+    )
+    /* return (
       <List>
         <Link to="/chats/1">
           <ListItem>
@@ -25,7 +50,7 @@ class ChatList extends Component {
           </ListItem>
         </Link>
       </List>
-    )
+    ) */
   }
 }
 

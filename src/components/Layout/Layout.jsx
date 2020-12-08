@@ -83,6 +83,28 @@ class Layout extends Component {
     })
   }
 
+  handleAddNewChat = () => {
+    const { chats } = this.state;
+
+    const newChat = `${ Object.keys(chats).length + 1 }`;
+    const newChatId = +newChat;
+    const newChatName = `Chat ${ newChat }`;
+    const newChatMessages = [{ author: 'Bot', text: `This is ${ newChatName }.`}];
+
+    this.setState({
+      chats: {
+        ...this.state.chats,
+        [newChat]: {
+          id: newChatId,
+          name: newChatName,
+          messages: newChatMessages,
+        }
+      }
+    })
+
+    console.log(this.state);
+  }
+
   get messages() {
     const { chats } = this.state;
     const { match } = this.props;
@@ -96,12 +118,30 @@ class Layout extends Component {
     return messages;
   }
 
+  get chats() {
+    return Object.values(this.state.chats);
+  }
+
+  get chatName() {
+    const { match } = this.props;
+    const chats = this.chats;
+    const id = +match.params.id;
+    
+    let chatName = 'Home';
+
+    if (match.path.match(/chats/i)) {
+      chatName = chats.find((chat) => chat.id === id).name;
+    }
+    
+    return chatName;
+  }
+
   render() {
     return (
       <div>
-        <Header />
+        <Header chatName={ this.chatName } />
         <div className="chat-space">
-          <ChatList />
+          <ChatList newChat={ this.handleAddNewChat } chats={ this.chats } />
           <Messanger onSend={ this.handleMessageSend } messages={ this.messages } />
         </div>
       </div>
