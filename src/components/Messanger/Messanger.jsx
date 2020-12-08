@@ -18,7 +18,7 @@ class Messanger extends Component {
 
     return (
       <div className="messanger">
-        { messages ? <MessagesList messages={ messages }/> : <p>Выберите чат.</p> }
+        { messages ? <MessagesList messages={ messages }/> : <p className="dummy">Выберите чат.</p> }
         { messages && <MessageField onSend={ onSend } /> }
       </div>
     )

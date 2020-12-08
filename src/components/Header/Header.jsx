@@ -7,9 +7,10 @@ class Header extends Component {
   render() {
     const { chatName } = this.props;
     return <div className="header">
-      <span>This is { chatName }</span>
+      <Link to="/" className="logo"></Link>
+      <span className="header_thing">This is { chatName }</span>
       <Link to="/profile">
-        <p>To Profile</p>
+        <p className="header_thing">To Profile</p>
       </Link>
     </div>
   }

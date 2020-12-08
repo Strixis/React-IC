@@ -138,7 +138,7 @@ class Layout extends Component {
 
   render() {
     return (
-      <div>
+      <div className="main">
         <Header chatName={ this.chatName } />
         <div className="chat-space">
           <ChatList newChat={ this.handleAddNewChat } chats={ this.chats } />

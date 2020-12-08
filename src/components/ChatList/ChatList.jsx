@@ -1,3 +1,5 @@
+import './ChatList.less';
+
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropType from 'prop-types';
@@ -17,12 +19,12 @@ class ChatList extends Component {
     const { newChat } = this.props;
 
     return (
-      <div>
-        <List>
+      <div className="chat-list">
+        <List className="list">
           { chats.map((chat) => {
             return (
-              <Link to={ `/chats/${ chat.id }` } key={ chat.id }>
-                <ListItem>
+              <Link to={ `/chats/${ chat.id }` } key={ chat.id } className="list_link">
+                <ListItem style={{ textAlign: "center" }}>
                   <ListItemText primary={ chat.name } />
                 </ListItem>
               </Link>
