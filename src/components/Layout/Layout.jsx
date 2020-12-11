@@ -7,7 +7,7 @@ import { Messanger } from 'components/Messanger';
 import { Bot } from 'components/Bot';
 
 class Layout extends Component {
-  state = {
+  /* state = {
     chats: {
       '1': {
         id: 1,
@@ -40,9 +40,9 @@ class Layout extends Component {
         ],
       },
     }
-  }
+  } */
 
-  componentDidUpdate() {
+  /* componentDidUpdate() {
     if (this.messages) {
       const { chats } = this.state;
       const { match } = this.props;
@@ -65,9 +65,9 @@ class Layout extends Component {
         }, 1000);
       }
     }
-  }
+  } */
 
-  handleMessageSend = (message) => {
+  /* handleMessageSend = (message) => {
     const { chats } = this.state;
     const { match } = this.props;
 
@@ -81,7 +81,7 @@ class Layout extends Component {
         [match.params.id]: chat,
       }
     })
-  }
+  } */
 
   handleAddNewChat = () => {
     const { chats } = this.state;
@@ -101,13 +101,10 @@ class Layout extends Component {
         }
       }
     })
-
-    console.log(this.state);
   }
 
-  get messages() {
-    const { chats } = this.state;
-    const { match } = this.props;
+  /* get messages() {
+    const { match, chats } = this.props;
     
     let messages = null;
 
@@ -116,13 +113,13 @@ class Layout extends Component {
     }
 
     return messages;
-  }
+  } */
 
-  get chats() {
-    return Object.values(this.state.chats);
-  }
+  /* get chats() {
+    return Object.values(this.props.chats);
+  } */
 
-  get chatName() {
+  /* get chatName() {
     const { match } = this.props;
     const chats = this.chats;
     const id = +match.params.id;
@@ -134,15 +131,16 @@ class Layout extends Component {
     }
     
     return chatName;
-  }
+  } */
 
   render() {
+    const { chats, messages, chatName, sendMessage } = this.props;
     return (
       <div className="main">
-        <Header chatName={ this.chatName } />
+        <Header chatName={ chatName } />
         <div className="chat-space">
-          <ChatList newChat={ this.handleAddNewChat } chats={ this.chats } />
-          <Messanger onSend={ this.handleMessageSend } messages={ this.messages } />
+          <ChatList newChat={ this.handleAddNewChat } chats={ chats } />
+          <Messanger onSend={ sendMessage } messages={ messages } />
         </div>
       </div>
     )
