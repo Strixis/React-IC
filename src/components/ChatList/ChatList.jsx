@@ -33,25 +33,6 @@ class ChatList extends Component {
         <button onClick={ newChat }>New chat</button>
       </div>
     )
-    /* return (
-      <List>
-        <Link to="/chats/1">
-          <ListItem>
-            <ListItemText primary="Chat 1" />
-          </ListItem>
-        </Link>
-        <Link to="/chats/2">
-          <ListItem>
-            <ListItemText primary="Chat 2" />
-          </ListItem>
-        </Link>
-        <Link to="/chats/3">
-          <ListItem>
-            <ListItemText primary="Chat 3" />
-          </ListItem>
-        </Link>
-      </List>
-    ) */
   }
 }
 

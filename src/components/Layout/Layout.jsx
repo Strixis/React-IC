@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { ChatList } from 'components/ChatList';
 import { Header } from 'components/Header';
 import { Messanger } from 'components/Messanger';
-import { Bot } from 'components/Bot';
+// import { Bot } from 'components/Bot';
 
 class Layout extends Component {
   /* componentDidUpdate() {

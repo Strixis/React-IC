@@ -13,8 +13,7 @@ class Messanger extends Component {
   }
 
   render() {
-    const { messages } = this.props;
-    const { onSend } = this.props;
+    const { messages, onSend } = this.props;
 
     return (
       <div className="messanger">
