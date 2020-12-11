@@ -7,41 +7,6 @@ import { Messanger } from 'components/Messanger';
 import { Bot } from 'components/Bot';
 
 class Layout extends Component {
-  /* state = {
-    chats: {
-      '1': {
-        id: 1,
-        name: 'Chat 1',
-        messages: [
-          {
-            author: 'Bot',
-            text: 'This is chat 1.',
-          }
-        ],
-      },
-      '2': {
-        id: 2,
-        name: 'Chat 2',
-        messages: [
-          {
-            author: 'Bot',
-            text: 'This is chat 2.',
-          }
-        ],
-      },
-      '3': {
-        id: 3,
-        name: 'Chat 3',
-        messages: [
-          {
-            author: 'Bot',
-            text: 'This is chat 3.',
-          }
-        ],
-      },
-    }
-  } */
-
   /* componentDidUpdate() {
     if (this.messages) {
       const { chats } = this.state;
@@ -66,80 +31,13 @@ class Layout extends Component {
       }
     }
   } */
-
-  /* handleMessageSend = (message) => {
-    const { chats } = this.state;
-    const { match } = this.props;
-
-    const chat = chats[match.params.id];
-    const messages = this.messages.concat([message]);
-    chat.messages = messages;
-
-    this.setState({
-      chats: {
-        ...this.state.chats,
-        [match.params.id]: chat,
-      }
-    })
-  } */
-
-  handleAddNewChat = () => {
-    const { chats } = this.state;
-
-    const newChat = `${ Object.keys(chats).length + 1 }`;
-    const newChatId = +newChat;
-    const newChatName = `Chat ${ newChat }`;
-    const newChatMessages = [{ author: 'Bot', text: `This is ${ newChatName }.`}];
-
-    this.setState({
-      chats: {
-        ...this.state.chats,
-        [newChat]: {
-          id: newChatId,
-          name: newChatName,
-          messages: newChatMessages,
-        }
-      }
-    })
-  }
-
-  /* get messages() {
-    const { match, chats } = this.props;
-    
-    let messages = null;
-
-    if (match && chats[match.params.id]) {
-      messages = chats[match.params.id].messages;
-    }
-
-    return messages;
-  } */
-
-  /* get chats() {
-    return Object.values(this.props.chats);
-  } */
-
-  /* get chatName() {
-    const { match } = this.props;
-    const chats = this.chats;
-    const id = +match.params.id;
-    
-    let chatName = 'Home';
-
-    if (match.path.match(/chats/i)) {
-      chatName = chats.find((chat) => chat.id === id).name;
-    }
-    
-    return chatName;
-  } */
-
   render() {
-    const { chats, messages, chatName, sendMessage } = this.props;
+    const { chats, messages, chatName, sendMessage, addChat } = this.props;
     return (
       <div className="main">
         <Header chatName={ chatName } />
         <div className="chat-space">
-          <ChatList newChat={ this.handleAddNewChat } chats={ chats } />
+          <ChatList newChat={ addChat } chats={ chats } />
           <Messanger onSend={ sendMessage } messages={ messages } />
         </div>
       </div>

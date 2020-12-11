@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions';
 import { Map, fromJS } from 'immutable';
 
-import { load, send } from 'actions/chats';
+import { load, send, add } from 'actions/chats';
 
 const initialState = new Map({
   loading: false,
@@ -47,6 +47,11 @@ const chatsReducer = handleActions({
     const { chatId, ...message } = action.payload;
 
     return state.mergeIn(['entries', chatId, 'messages'], message);
+  },
+  [add]: (state, action) => {
+    const { newChat } = action.payload;
+
+    return state.mergeIn(['entries'], fromJS(newChat));
   }
 }, initialState);
 
