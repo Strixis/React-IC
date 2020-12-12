@@ -12,18 +12,23 @@ class LayoutContainer extends PureComponent {
     if (chats.length === 0) loadChats();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const { messages, sendMessage, chatId } = this.props;
 
     if (messages) {
       const message = messages[messages.length - 1];
-      if (message.author !== 'Bot') {
+      
+      if (
+          message.author !== 'Bot' && 
+          chatId === prevProps.chatId &&
+          messages.length > prevProps.messages.length
+        ) {
         setTimeout(() => {
           sendMessage({
             ...Bot.getAnswer(message),
             chatId,
           });
-      }, 3000);
+        }, 3000);
       }
     }
   }
