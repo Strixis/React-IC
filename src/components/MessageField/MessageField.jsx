@@ -51,7 +51,6 @@ class MessageField extends Component {
     
     return (
       <Grid container
-        direction="column"
         justify="center"
         alignItems="center"
       >

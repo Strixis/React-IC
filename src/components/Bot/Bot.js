@@ -12,10 +12,10 @@ class Bot {
       key.lastIndex = 0;
       if (key.test(message.text)) {
         text = value[Math.floor(Math.random() * Math.floor(value.length))];
-        return [{ author, text }];
+        return { author, text };
       }
     }
-    return [{ author, text }];
+    return { author, text };
   }
 
   static _getDefaultMessage() {

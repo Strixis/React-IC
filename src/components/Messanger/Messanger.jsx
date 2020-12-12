@@ -1,39 +1,25 @@
 import './Messanger.less';
 
 import React, { Component } from 'react';
+import PropType from 'prop-types';
 
 import { MessagesList } from 'components/MessageList';
 import { MessageField } from 'components/MessageField';
-import { Bot } from 'components/Bot';
 
 class Messanger extends Component {
-  state = {
-    messages: [],
-  }
-
-  componentDidUpdate() {
-    const message = this.state.messages[this.state.messages.length - 1];
-
-    if (message.author !== 'Bot') {
-      setTimeout(() => {
-        this.setState({
-          messages: this.state.messages.concat(Bot.getAnswer(message)),
-        })
-      }, 1000);
-    }
-  }
-
-  handleMessageSend = (message) => {
-    this.setState(({ messages }) => ({ messages: messages.concat([message]) }))
+  static propTypes = {
+    onSend: PropType.func,
+    messages: PropType.array,
   }
 
   render() {
-    const { messages } = this.state;
+    const { messages } = this.props;
+    const { onSend } = this.props;
 
     return (
       <div className="messanger">
-        <MessagesList messages={ messages }/>
-        <MessageField onSend={ this.handleMessageSend } />
+        { messages ? <MessagesList messages={ messages }/> : <p className="dummy">Выберите чат.</p> }
+        { messages && <MessageField onSend={ onSend } /> }
       </div>
     )
   }
