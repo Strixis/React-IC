@@ -32,10 +32,10 @@ class Layout extends Component {
     }
   } */
   render() {
-    const { chats, messages, chatName, sendMessage, addChat } = this.props;
+    const { chats, messages, chatName, sendMessage, addChat, user } = this.props;
     return (
       <div className="main">
-        <Header chatName={ chatName } />
+        <Header chatName={ chatName } user={ user } />
         <div className="chat-space">
           <ChatList newChat={ addChat } chats={ chats } />
           <Messanger onSend={ sendMessage } messages={ messages } />

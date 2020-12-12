@@ -5,14 +5,18 @@ import { Link } from 'react-router-dom';
 
 class Header extends Component {
   render() {
-    const { chatName } = this.props;
+    const { chatName, user } = this.props;
     
     return <div className="header">
       <Link to="/" className="logo"></Link>
       <span className="header_thing">This is { chatName }</span>
-      <Link to="/profile">
-        <p className="header_thing">To Profile</p>
-      </Link>
+      <div className="profile">
+        <span className="profile_thing">Name: { user.name }</span>
+        <span className="profile_thing">Role: { user.role }</span>
+        <Link to="/profile">
+          <p>To Profile</p>
+        </Link>
+      </div>
     </div>
   }
 }

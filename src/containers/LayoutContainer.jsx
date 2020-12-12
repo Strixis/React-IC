@@ -38,13 +38,14 @@ class LayoutContainer extends PureComponent {
   }
 
   render() {
-    const { chats, messages, chatName } = this.props;
+    const { chats, messages, chatName, user } = this.props;
     return (
       <Layout sendMessage={ this.handleMessageSend }
         addChat={ this.handleNewChat }
         messages={ messages }
         chats={ chats }
         chatName={ chatName }
+        user={ user }
       />
     )
   }
@@ -52,6 +53,7 @@ class LayoutContainer extends PureComponent {
 
 function mapStateToProps(state, ownProps) {
   const chats = state.chats.get('entries');
+  const user = state.profile.toJS();
   const { match } = ownProps;
 
   let messages = null;
@@ -72,6 +74,7 @@ function mapStateToProps(state, ownProps) {
     messages,
     chatName,
     chatId,
+    user,
   }
 };
 
