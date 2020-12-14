@@ -3,34 +3,12 @@ import { connect } from 'react-redux';
 
 import { Layout } from 'components/Layout';
 import { load, send, add } from 'actions/chats';
-import { Bot } from 'components/Bot';
 
 class LayoutContainer extends PureComponent {
   componentDidMount() {
     const { loadChats, chats } = this.props;
 
     if (chats.length === 0) loadChats();
-  }
-
-  componentDidUpdate(prevProps) {
-    const { messages, sendMessage, chatId } = this.props;
-
-    if (messages) {
-      const message = messages[messages.length - 1];
-      
-      if (
-          message.author !== 'Bot' && 
-          chatId === prevProps.chatId &&
-          messages.length > prevProps.messages.length
-        ) {
-        setTimeout(() => {
-          sendMessage({
-            ...Bot.getAnswer(message),
-            chatId,
-          });
-        }, 3000);
-      }
-    }
   }
 
   handleMessageSend = (message) => {
