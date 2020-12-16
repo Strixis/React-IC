@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { push } from 'connected-react-router';
 
 import { Layout } from 'components/Layout';
 import { load, send, add } from 'actions/chats';
@@ -20,10 +21,10 @@ class LayoutContainer extends PureComponent {
   }
 
   handleNewChat = () => {
-    const { chats, addChat } = this.props;
+    const { chats, addChat, redirect } = this.props;
     
     const newChatId = chats.length + 1;
-    const newChatName = `Chat ${ newChatId }`;
+    const newChatName = prompt('Enter chat name: ');
     const newChatMessages = [{author: 'Bot', text: `This is ${ newChatName}`}];
     const newChat = {
       [`${ newChatId }`]: {
@@ -34,13 +35,15 @@ class LayoutContainer extends PureComponent {
     }
     
     addChat({newChat});
+    redirect(newChatId);
   }
 
   render() {
-    const { chats, messages, chatName, user } = this.props;
+    const { chats, messages, chatName, user, redirect } = this.props;
     return (
       <Layout sendMessage={ this.handleMessageSend }
         addChat={ this.handleNewChat }
+        navigate={ redirect }
         messages={ messages }
         chats={ chats }
         chatName={ chatName }
@@ -82,6 +85,7 @@ function mapDispatchToProps(dispatch) {
     loadChats: () => dispatch(load()),
     sendMessage: (message) => dispatch(send(message)),
     addChat: (chat) => dispatch(add(chat)),
+    redirect: (id) => dispatch(push(`/chats/${ id }`)),
   }
 };
 

@@ -1,7 +1,6 @@
 import './ChatList.less';
 
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropType from 'prop-types';
 
 import List from '@material-ui/core/List';
@@ -14,6 +13,12 @@ class ChatList extends Component {
     chats: PropType.array,
   }
 
+  handleNavigate = (id) => {
+    const { navigate } = this.props;
+
+    navigate(id)
+  }
+
   render() {
     const { chats, newChat } = this.props;
 
@@ -22,11 +27,11 @@ class ChatList extends Component {
         <List className="list">
           { chats.map((chat) => {
             return (
-              <Link to={ chat.link } key={ chat.id } className="list_link">
+              <button onClick={ () => this.handleNavigate(chat.id) } key={ chat.id } className="list_link">
                 <ListItem style={{ textAlign: "center" }}>
                   <ListItemText primary={ chat.name } />
                 </ListItem>
-              </Link>
+              </button>
             )
           })}
         </List>

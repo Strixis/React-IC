@@ -31,7 +31,7 @@ module.exports = (_, { mode }) => ({
         exclude: /node_modules/,
       },
       {
-        test: /.(less)|(css)$/i,
+        test: /\.(less)|(css)$/i,
         use: [
           mode === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
           'css-loader',
