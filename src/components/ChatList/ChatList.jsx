@@ -15,15 +15,14 @@ class ChatList extends Component {
   }
 
   render() {
-    const { chats } = this.props;
-    const { newChat } = this.props;
+    const { chats, newChat } = this.props;
 
     return (
       <div className="chat-list">
         <List className="list">
           { chats.map((chat) => {
             return (
-              <Link to={ `/chats/${ chat.id }` } key={ chat.id } className="list_link">
+              <Link to={ chat.link } key={ chat.id } className="list_link">
                 <ListItem style={{ textAlign: "center" }}>
                   <ListItemText primary={ chat.name } />
                 </ListItem>
@@ -34,25 +33,6 @@ class ChatList extends Component {
         <button onClick={ newChat }>New chat</button>
       </div>
     )
-    /* return (
-      <List>
-        <Link to="/chats/1">
-          <ListItem>
-            <ListItemText primary="Chat 1" />
-          </ListItem>
-        </Link>
-        <Link to="/chats/2">
-          <ListItem>
-            <ListItemText primary="Chat 2" />
-          </ListItem>
-        </Link>
-        <Link to="/chats/3">
-          <ListItem>
-            <ListItemText primary="Chat 3" />
-          </ListItem>
-        </Link>
-      </List>
-    ) */
   }
 }
 
