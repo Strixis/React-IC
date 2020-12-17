@@ -7,6 +7,16 @@ import { Messanger } from 'components/Messanger';
 
 class Layout extends Component {
   render() {
+    // const { chats, messages, chatName, sendMessage, addChat, user, navigate, removeChat } = this.props;
+    // return (
+    //   <div className="main">
+    //     <Header chatName={ chatName } user={ user } />
+    //     <div className="chat-space">
+    //       <ChatList newChat={ addChat } chats={ chats } navigate={ navigate } removeChat={ removeChat } />
+    //       <Messanger onSend={ sendMessage } messages={ messages } />
+    //     </div>
+    //   </div>
+    // )
     const { chats, messages, chatName, sendMessage, addChat, user, navigate } = this.props;
     return (
       <div className="main">

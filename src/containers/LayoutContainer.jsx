@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 
 import { Layout } from 'components/Layout';
-import { load, send, add } from 'actions/chats';
+import { load, send, add, remove } from 'actions/chats';
 
 class LayoutContainer extends PureComponent {
   componentDidMount() {
@@ -22,6 +22,7 @@ class LayoutContainer extends PureComponent {
 
   handleNewChat = () => {
     const { chats, addChat, redirect } = this.props;
+    console.log(chats);
     
     const newChatId = chats.length + 1;
     const newChatName = prompt('Enter chat name: ');
@@ -38,7 +39,25 @@ class LayoutContainer extends PureComponent {
     redirect(newChatId);
   }
 
+  // handleRemoveChat = (id) => {
+  //   const { removeChat } = this.props;
+
+  //   removeChat(id);
+  // }
+
   render() {
+    // const { chats, messages, chatName, user, redirect } = this.props;
+    // return (
+    //   <Layout sendMessage={ this.handleMessageSend }
+    //     addChat={ this.handleNewChat }
+    //     removeChat={ this.handleRemoveChat }
+    //     navigate={ redirect }
+    //     messages={ messages }
+    //     chats={ chats }
+    //     chatName={ chatName }
+    //     user={ user }
+    //   />
+    // )
     const { chats, messages, chatName, user, redirect } = this.props;
     return (
       <Layout sendMessage={ this.handleMessageSend }
@@ -86,6 +105,7 @@ function mapDispatchToProps(dispatch) {
     sendMessage: (message) => dispatch(send(message)),
     addChat: (chat) => dispatch(add(chat)),
     redirect: (id) => dispatch(push(`/chats/${ id }`)),
+    // removeChat: (id) => dispatch(remove(id)),
   }
 };
 
