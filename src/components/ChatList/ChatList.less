@@ -21,3 +21,18 @@
     cursor: pointer;
   }
 }
+
+.blink {
+  animation-name: blink;
+  animation-duration: .75s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+  from {
+    background-color: aquamarine;
+  }
+  to {
+    background-color: aliceblue;
+  }
+}

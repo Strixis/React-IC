@@ -22,7 +22,9 @@ class ChatList extends Component {
           { chats.map((chat) => {
             return (
               <div key={ chat.id }>
-                <button onClick={ () => navigate(chat.id) } className="list_link" >
+                <button onClick={ () => navigate(chat.id) }
+                  className={`list_link ${chat.newMessage ? 'blink' : ''}`}
+                >
                   <ListItem style={{ textAlign: "center" }}>
                     <ListItemText primary={ chat.name } />
                   </ListItem>

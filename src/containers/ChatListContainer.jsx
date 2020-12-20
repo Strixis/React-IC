@@ -18,12 +18,12 @@ class ChatListContainer extends PureComponent {
     
     const newChatId = chats.length + 1;
     const newChatName = prompt('Enter chat name: ');
-    const newChatMessages = [{author: 'Bot', text: `This is ${ newChatName}`}];
     const newChat = {
       [`${ newChatId }`]: {
         id: newChatId,
         name: newChatName,
-        messages: [...newChatMessages],
+        newMessageFlag: false,
+        messages: [],
       }
     }
     
@@ -57,6 +57,7 @@ function mapStateToProps(state, ownProps) {
     chats: chats.map((entry) => ({
       id: entry.get('id'),
       name: entry.get('name'),
+      newMessage: entry.get('newMessageFlag'),
       link: `/chats/${entry.get('id')}`})).toList().toJS(),
     chatName,
     chatId

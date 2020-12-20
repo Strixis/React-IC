@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions';
 import { Map, fromJS } from 'immutable';
 
-import { load, send, add, remove } from 'actions/chats';
+import { load, send, add, remove, blink } from 'actions/chats';
 
 const initialState = new Map({
   loading: false,
@@ -14,6 +14,7 @@ const chatsReducer = handleActions({
       '1': {
         id: 1,
         name: 'Chat 1',
+        newMessageFlag: false,
         messages: [
           {
             author: 'Bot',
@@ -24,6 +25,7 @@ const chatsReducer = handleActions({
       '2': {
         id: 2,
         name: 'Chat 2',
+        newMessageFlag: false,
         messages: [
           {
             author: 'Bot',
@@ -34,6 +36,7 @@ const chatsReducer = handleActions({
       '3': {
         id: 3,
         name: 'Chat 3',
+        newMessageFlag: false,
         messages: [
           {
             author: 'Bot',
@@ -57,7 +60,12 @@ const chatsReducer = handleActions({
   //   const id = action.payload;
 
   //   return state.deleteIn(['entries', `${ id }`]);
-  // }
+  // },
+  [blink]: (state, action) => {
+    const { newMessageFlag, chatId } = action.payload;
+
+    return state.mergeIn(['entries', chatId ], newMessageFlag);
+  }
 }, initialState);
 
 export { chatsReducer };
