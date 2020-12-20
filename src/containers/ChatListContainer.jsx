@@ -35,9 +35,7 @@ class ChatListContainer extends PureComponent {
     const { chats, redirect } = this.props;
 
     return(
-      <ChatList addChat={ this.handleNewChat }
-        chats={ chats }
-        navigate={ redirect }
+      <ChatList addChat={ this.handleNewChat } chats={ chats } navigate={ redirect }
       />
     )
   }
