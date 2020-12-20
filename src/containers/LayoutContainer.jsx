@@ -12,13 +12,13 @@ class LayoutContainer extends PureComponent {
     if (chats.length === 0) loadChats();
   }
 
-  handleMessageSend = (message) => {
-    const { sendMessage, chatId } = this.props;
-    sendMessage({
-      ...message,
-      chatId,
-    });
-  }
+  // handleMessageSend = (message) => {
+  //   const { sendMessage, chatId } = this.props;
+  //   sendMessage({
+  //     ...message,
+  //     chatId,
+  //   });
+  // }
 
   handleNewChat = () => {
     const { chats, addChat, redirect } = this.props;
@@ -58,9 +58,9 @@ class LayoutContainer extends PureComponent {
     //     user={ user }
     //   />
     // )
-    const { chats, messages, chatName, user, redirect } = this.props;
+    const { chats, messages, chatName, user, redirect, match } = this.props;
     return (
-      <Layout sendMessage={ this.handleMessageSend }
+      <Layout match={ match }
         addChat={ this.handleNewChat }
         navigate={ redirect }
         messages={ messages }
@@ -102,7 +102,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch) {
   return {
     loadChats: () => dispatch(load()),
-    sendMessage: (message) => dispatch(send(message)),
+    // sendMessage: (message) => dispatch(send(message)),
     addChat: (chat) => dispatch(add(chat)),
     redirect: (id) => dispatch(push(`/chats/${ id }`)),
     // removeChat: (id) => dispatch(remove(id)),
