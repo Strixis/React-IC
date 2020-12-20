@@ -1,7 +1,7 @@
 import './Layout.less';
 
 import React, { Component } from 'react';
-import { ChatList } from 'components/ChatList';
+import { ChatListRedux } from 'containers/ChatListContainer';
 import { Header } from 'components/Header';
 import { MessangerRedux } from 'containers/MessangerContainer';
 
@@ -22,7 +22,7 @@ class Layout extends Component {
       <div className="main">
         <Header chatName={ chatName } user={ user } />
         <div className="chat-space">
-          <ChatList newChat={ addChat } chats={ chats } navigate={ navigate } />
+          <ChatListRedux match={ match } />
           <MessangerRedux match={ match } />
         </div>
       </div>

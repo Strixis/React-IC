@@ -35,7 +35,7 @@ class ChatList extends Component {
     //     <button onClick={ newChat }>New chat</button>
     //   </div>
     // )
-    const { chats, newChat, navigate } = this.props;
+    const { chats, addChat, navigate } = this.props;
 
     return (
       <div className="chat-list">
@@ -52,7 +52,7 @@ class ChatList extends Component {
             )
           })}
         </List>
-        <button onClick={ newChat }>New chat</button>
+        <button onClick={ addChat }>New chat</button>
       </div>
     )
   }
