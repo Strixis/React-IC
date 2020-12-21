@@ -3,11 +3,10 @@ import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 
 import { ChatList } from 'components/ChatList';
-import { listen, createChat } from 'actions/chats';
+import { listen, createChat, removeChat } from 'actions/chats';
 
 class ChatListContainer extends PureComponent {
   componentDidMount() {
-    console.log('chat list mounted');
     const { listenChat } = this.props;
 
     listenChat();
@@ -22,10 +21,13 @@ class ChatListContainer extends PureComponent {
   }
 
   render() {
-    const { chats, redirect } = this.props;
+    const { chats, redirect, removeChat } = this.props;
 
     return(
-      <ChatList addChat={ this.handleNewChat } chats={ chats } navigate={ redirect }
+      <ChatList addChat={ this.handleNewChat }
+        removeChat={ removeChat }
+        chats={ chats }
+        navigate={ redirect }
       />
     )
   }
@@ -47,6 +49,7 @@ function mapDispatchToProps(dispatch) {
   return {
     createChat,
     listenChat: () => dispatch(listen()),
+    removeChat: (chatId) => dispatch(removeChat(chatId)),
     redirect: (id) => dispatch(push(`/chats/${ id }`)),
   }
 };

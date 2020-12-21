@@ -28,11 +28,9 @@ const chatsReducer = handleActions({
 
     return state.mergeIn(['entries', _id], fromJS(action.payload));
   },
-  // [remove]: (state, action) => {
-  //   const id = action.payload;
-
-  //   return state.deleteIn(['entries', `${ id }`]);
-  // },
+  [remove]: (state, action) => {
+    return state.deleteIn(['entries', `${ action.payload }`]);
+  },
   [blink]: (state, action) => {
     const { newMessageFlag, chatId } = action.payload;
 

@@ -24,17 +24,25 @@ const listen = () => dispatch => {
   socket.on('chat message', (message) => {
     dispatch(send(message))
   })
-}
+};
+const removeChat = chatId => dispatch  => {
+  fetch(`http://localhost:3000/chats/${ chatId }`, {
+    method: 'DELETE'
+  })
+    .then(() => {
+      dispatch(remove(chatId));
+    })
+    .catch((err) => console.log(err))
+};
 
 const createChat = chat => {
   socket.emit('new chat', chat);
 };
-
 const sendMessage = message => {
   socket.emit('chat message', message);
 };
 
 export {
   load, send, add, remove, blink,
-  listen, createChat, sendMessage
+  listen, createChat, sendMessage, removeChat
 };

@@ -11,7 +11,7 @@ const history = createBrowserHistory();
 
 const store = createStore(
   initReducer(history),
-  applyMiddleware(/* logger, */ bot, routerMiddleware(history), thunk)
+  applyMiddleware(logger, bot, routerMiddleware(history), thunk)
 );
 
 export { store, history };

@@ -14,7 +14,7 @@ class ChatList extends Component {
   }
 
   render() {
-    const { chats, addChat, navigate } = this.props;
+    const { chats, addChat, navigate, removeChat } = this.props;
 
     return (
       <div className="chat-list">
@@ -29,6 +29,7 @@ class ChatList extends Component {
                     <ListItemText primary={ chat.name } />
                   </ListItem>
                 </button>
+                <button onClick={ () => removeChat(chat.id) }>X</button>
               </div>
             )
           })}
