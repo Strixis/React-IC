@@ -2,11 +2,15 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
 import { Messanger } from 'components/Messanger';
-import { send } from 'actions/chats';
+import { sendMessage } from 'actions/chats';
 
 class MessangerContainer extends PureComponent {
+  componentDidMount() {
+    console.log('Messanger mounted');
+  }
   handleMessageSend = (message) => {
     const { sendMessage, chatId } = this.props;
+
     sendMessage({
       ...message,
       chatId,
@@ -42,7 +46,8 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    sendMessage: (message) => dispatch(send(message)),
+    // sendMessage: (message) => dispatch(send(message)),
+    sendMessage,
   }
 };
 

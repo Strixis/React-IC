@@ -15,7 +15,7 @@ const chatsReducer = handleActions({
 
       return acc;
     }, {});
-    
+
     return state.set('entries', fromJS(entries));
   },
   [send]: (state, action) => {
@@ -24,17 +24,8 @@ const chatsReducer = handleActions({
     return state.mergeIn(['entries', chatId, 'messages'], message);
   },
   [add]: (state, action) => {
-    const { /* newChatName, */ _id } = action.payload;
-    // const newChatId = state.get('entries').size + 1;
+    const { _id } = action.payload;
 
-    // const newChat = {
-    //   id: newChatId || _id,
-    //   name: newChatName,
-    //   newMessageFlag: false,
-    //   messages: []
-    // }
-    
-    // return state.mergeIn(['entries', /* newChatId || */ _id], fromJS(newChat));
     return state.mergeIn(['entries', _id], fromJS(action.payload));
   },
   // [remove]: (state, action) => {

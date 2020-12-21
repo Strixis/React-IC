@@ -20,13 +20,21 @@ const listen = () => dispatch => {
   socket.on('new chat', (chat) => {
     dispatch(add(chat))
   })
+
+  socket.on('chat message', (message) => {
+    dispatch(send(message))
+  })
 }
 
 const createChat = chat => {
   socket.emit('new chat', chat);
 };
 
+const sendMessage = message => {
+  socket.emit('chat message', message);
+};
+
 export {
   load, send, add, remove, blink,
-  listen, createChat
+  listen, createChat, sendMessage
 };
