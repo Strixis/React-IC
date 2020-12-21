@@ -10,41 +10,13 @@ const initialState = new Map({
 
 const chatsReducer = handleActions({
   [load]: (state, action) => {
-    return state.set('entries', fromJS({
-      '1': {
-        id: 1,
-        name: 'Chat 1',
-        newMessageFlag: false,
-        messages: [
-          {
-            author: 'Bot',
-            text: 'This is chat 1.',
-          }
-        ],
-      },
-      '2': {
-        id: 2,
-        name: 'Chat 2',
-        newMessageFlag: false,
-        messages: [
-          {
-            author: 'Bot',
-            text: 'This is chat 2.',
-          }
-        ],
-      },
-      '3': {
-        id: 3,
-        name: 'Chat 3',
-        newMessageFlag: false,
-        messages: [
-          {
-            author: 'Bot',
-            text: 'This is chat 3.',
-          }
-        ],
-      },
-    }));
+    const entries = action.payload.reduce((acc, item) => {
+      acc[item._id] = item;
+
+      return acc;
+    }, {});
+    
+    return state.set('entries', fromJS(entries));
   },
   [send]: (state, action) => {
     const { chatId, ...message } = action.payload;
@@ -52,9 +24,18 @@ const chatsReducer = handleActions({
     return state.mergeIn(['entries', chatId, 'messages'], message);
   },
   [add]: (state, action) => {
-    const { newChat } = action.payload;
+    const { /* newChatName, */ _id } = action.payload;
+    // const newChatId = state.get('entries').size + 1;
 
-    return state.mergeIn(['entries'], fromJS(newChat));
+    // const newChat = {
+    //   id: newChatId || _id,
+    //   name: newChatName,
+    //   newMessageFlag: false,
+    //   messages: []
+    // }
+    
+    // return state.mergeIn(['entries', /* newChatId || */ _id], fromJS(newChat));
+    return state.mergeIn(['entries', _id], fromJS(action.payload));
   },
   // [remove]: (state, action) => {
   //   const id = action.payload;

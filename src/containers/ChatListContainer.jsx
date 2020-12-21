@@ -3,32 +3,22 @@ import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 
 import { ChatList } from 'components/ChatList';
-import { load, add, remove } from 'actions/chats';
+import { /* load, */ listen, createChat } from 'actions/chats';
 
 class ChatListContainer extends PureComponent {
   componentDidMount() {
-    const { loadChats, chats } = this.props;
+    const { /* loadChats, chats, */ listenChat } = this.props;
 
-    if (chats.length === 0) loadChats();
+    listenChat();
+    // loadChats();
   }
 
   handleNewChat = () => {
-    const { chats, addChat, redirect } = this.props;
-    console.log(chats);
+    const { createChat } = this.props;
     
-    const newChatId = chats.length + 1;
     const newChatName = prompt('Enter chat name: ');
-    const newChat = {
-      [`${ newChatId }`]: {
-        id: newChatId,
-        name: newChatName,
-        newMessageFlag: false,
-        messages: [],
-      }
-    }
     
-    addChat({newChat});
-    redirect(newChatId);
+    createChat({ name: newChatName });
   }
 
   render() {
@@ -43,33 +33,22 @@ class ChatListContainer extends PureComponent {
 
 function mapStateToProps(state, ownProps) {
   const chats = state.chats.get('entries');
-  const { match } = ownProps;
-
-  let chatId = null;
-  let chatName = 'Home';
-
-  if (match && chats.has(match.params.id)) {
-    chatName = chats.getIn([match.params.id, 'name']);
-    chatId = match.params.id;
-  }
 
   return {
     chats: chats.map((entry) => ({
-      id: entry.get('id'),
+      id: entry.get('_id'),
       name: entry.get('name'),
       newMessage: entry.get('newMessageFlag'),
-      link: `/chats/${entry.get('id')}`})).toList().toJS(),
-    chatName,
-    chatId
+      link: `/chats/${entry.get('_id')}`})).toList().toJS(),
   }
 };
 
 function mapDispatchToProps(dispatch) {
   return {
-    loadChats: () => dispatch(load()),
-    addChat: (chat) => dispatch(add(chat)),
+    // loadChats: () => dispatch(load()),
+    createChat,
+    listenChat: () => dispatch(listen()),
     redirect: (id) => dispatch(push(`/chats/${ id }`)),
-    // removeChat: (id) => dispatch(remove(id)),
   }
 };
 
