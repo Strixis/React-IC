@@ -1,3 +1,25 @@
 {"name":"123","messages":[],"_id":"L1wBqOAVWyr1t5BA"}
 {"name":"New chat","messages":[],"_id":"3j1LaAa3ZhlntKVy"}
 {"$$deleted":true,"_id":"3j1LaAa3ZhlntKVy"}
+{"name":"321","messages":[],"_id":"gobNaQPjPPIHAa86"}
+{"name":"test chat","messages":[],"_id":"cm3k6lT76FskIBcT"}
+{"name":"321","messages":[{"author":"V","text":"Hi!"}],"_id":"gobNaQPjPPIHAa86"}
+{"name":"321","messages":[{"author":"V","text":"Hi!"},{"chatId":"gobNaQPjPPIHAa86","author":"Bot","text":"Привет, V! Бот на связи!"}],"_id":"gobNaQPjPPIHAa86"}
+{"name":"123","messages":[{"author":"V","text":"Hello!"}],"_id":"L1wBqOAVWyr1t5BA"}
+{"name":"123","messages":[{"author":"V","text":"Hello!"},{"chatId":"L1wBqOAVWyr1t5BA","author":"Bot","text":"Привет, V! Бот на связи!"}],"_id":"L1wBqOAVWyr1t5BA"}
+{"name":"test chat","messages":[{"author":"V","text":"Hi!"}],"_id":"cm3k6lT76FskIBcT"}
+{"name":"test chat","messages":[{"author":"V","text":"Hi!"},{"chatId":"cm3k6lT76FskIBcT","author":"Bot","text":"Привет, V! Бот на связи!"}],"_id":"cm3k6lT76FskIBcT"}
+{"$$deleted":true,"_id":"cm3k6lT76FskIBcT"}
+{"name":"a","messages":[],"_id":"YCT0LUOYloqIRro4"}
+{"$$deleted":true,"_id":"YCT0LUOYloqIRro4"}
+{"$$deleted":true,"_id":"gobNaQPjPPIHAa86"}
+{"$$deleted":true,"_id":"L1wBqOAVWyr1t5BA"}
+{"name":"Chat 1","messages":[],"_id":"XM7cle4W3ugQWCqn"}
+{"name":"Chat 2","messages":[],"_id":"13QvWPsxGcRPDZad"}
+{"name":"Chat 3","messages":[],"_id":"laNxx26CFuNKbS5k"}
+{"name":"Chat 3","messages":[{"author":"V","text":"Hi!"}],"_id":"laNxx26CFuNKbS5k"}
+{"name":"Chat 3","messages":[{"author":"V","text":"Hi!"},{"chatId":"laNxx26CFuNKbS5k","author":"Bot","text":"Привет, V! Бот на связи!"}],"_id":"laNxx26CFuNKbS5k"}
+{"name":"Chat 1","messages":[{"author":"123","text":"123"}],"_id":"XM7cle4W3ugQWCqn"}
+{"name":"Chat 1","messages":[{"author":"123","text":"123"},{"chatId":"XM7cle4W3ugQWCqn","author":"Bot","text":"Привет, 123! Бот на связи!"}],"_id":"XM7cle4W3ugQWCqn"}
+{"name":"Chat 3","messages":[{"author":"V","text":"Hi!"},{"chatId":"laNxx26CFuNKbS5k","author":"Bot","text":"Привет, V! Бот на связи!"},{"author":"D","text":"123"}],"_id":"laNxx26CFuNKbS5k"}
+{"name":"Chat 3","messages":[{"author":"V","text":"Hi!"},{"chatId":"laNxx26CFuNKbS5k","author":"Bot","text":"Привет, V! Бот на связи!"},{"author":"D","text":"123"},{"chatId":"laNxx26CFuNKbS5k","author":"Bot","text":"Привет, D! Бот на связи!"}],"_id":"laNxx26CFuNKbS5k"}

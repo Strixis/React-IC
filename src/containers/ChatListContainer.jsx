@@ -37,7 +37,7 @@ function mapStateToProps(state, ownProps) {
   const chats = state.chats.get('entries');
 
   return {
-    chats: chats.map((entry) => ({
+    chats: chats.sortBy((entry) => -entry.get('timestamp')).map((entry) => ({
       id: entry.get('_id'),
       name: entry.get('name'),
       newMessage: entry.get('newMessageFlag'),
