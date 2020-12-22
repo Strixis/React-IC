@@ -2,10 +2,17 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
 import { Header } from 'components/Header';
+import { getProfile } from 'actions/profile'
 
 class HeaderContainer extends PureComponent {
+  componentDidMount() {
+    const { listenProfile } = this.props;
+
+    listenProfile();
+  }
+
   render() {
-    const { user, chatName } = this.props;
+    const { user, chatName  } = this.props;
     return (
       <Header chatName={ chatName } user={ user } />
     )
@@ -14,7 +21,7 @@ class HeaderContainer extends PureComponent {
 
 function mapStateToProps(state, ownProps) {
   const chats = state.chats.get('entries');
-  const user = state.profile.toJS();
+  const user = state.profile.get('entries').toJS();
 
   const { match } = ownProps;
 
@@ -30,6 +37,12 @@ function mapStateToProps(state, ownProps) {
   }
 };
 
-const HeaderRedux = connect(mapStateToProps)(HeaderContainer);
+function mapDispatchToProps(dispatch) {
+  return {
+    listenProfile: () => dispatch(getProfile())
+  }
+}
+
+const HeaderRedux = connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);
 
 export { HeaderRedux };
