@@ -1,36 +1,15 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { push } from 'connected-react-router';
 
 import { Layout } from 'components/Layout';
-import { load, send, add } from 'actions/chats';
-import { Bot } from 'components/Bot';
+import { load, send, add, remove } from 'actions/chats';
 
 class LayoutContainer extends PureComponent {
   componentDidMount() {
     const { loadChats, chats } = this.props;
 
     if (chats.length === 0) loadChats();
-  }
-
-  componentDidUpdate(prevProps) {
-    const { messages, sendMessage, chatId } = this.props;
-
-    if (messages) {
-      const message = messages[messages.length - 1];
-      
-      if (
-          message.author !== 'Bot' && 
-          chatId === prevProps.chatId &&
-          messages.length > prevProps.messages.length
-        ) {
-        setTimeout(() => {
-          sendMessage({
-            ...Bot.getAnswer(message),
-            chatId,
-          });
-        }, 3000);
-      }
-    }
   }
 
   handleMessageSend = (message) => {
@@ -42,10 +21,11 @@ class LayoutContainer extends PureComponent {
   }
 
   handleNewChat = () => {
-    const { chats, addChat } = this.props;
+    const { chats, addChat, redirect } = this.props;
+    console.log(chats);
     
     const newChatId = chats.length + 1;
-    const newChatName = `Chat ${ newChatId }`;
+    const newChatName = prompt('Enter chat name: ');
     const newChatMessages = [{author: 'Bot', text: `This is ${ newChatName}`}];
     const newChat = {
       [`${ newChatId }`]: {
@@ -56,13 +36,33 @@ class LayoutContainer extends PureComponent {
     }
     
     addChat({newChat});
+    redirect(newChatId);
   }
 
+  // handleRemoveChat = (id) => {
+  //   const { removeChat } = this.props;
+
+  //   removeChat(id);
+  // }
+
   render() {
-    const { chats, messages, chatName, user } = this.props;
+    // const { chats, messages, chatName, user, redirect } = this.props;
+    // return (
+    //   <Layout sendMessage={ this.handleMessageSend }
+    //     addChat={ this.handleNewChat }
+    //     removeChat={ this.handleRemoveChat }
+    //     navigate={ redirect }
+    //     messages={ messages }
+    //     chats={ chats }
+    //     chatName={ chatName }
+    //     user={ user }
+    //   />
+    // )
+    const { chats, messages, chatName, user, redirect } = this.props;
     return (
       <Layout sendMessage={ this.handleMessageSend }
         addChat={ this.handleNewChat }
+        navigate={ redirect }
         messages={ messages }
         chats={ chats }
         chatName={ chatName }
@@ -104,6 +104,8 @@ function mapDispatchToProps(dispatch) {
     loadChats: () => dispatch(load()),
     sendMessage: (message) => dispatch(send(message)),
     addChat: (chat) => dispatch(add(chat)),
+    redirect: (id) => dispatch(push(`/chats/${ id }`)),
+    // removeChat: (id) => dispatch(remove(id)),
   }
 };
 

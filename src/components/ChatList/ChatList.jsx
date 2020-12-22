@@ -1,7 +1,6 @@
 import './ChatList.less';
 
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropType from 'prop-types';
 
 import List from '@material-ui/core/List';
@@ -15,18 +14,41 @@ class ChatList extends Component {
   }
 
   render() {
-    const { chats, newChat } = this.props;
+    // const { chats, newChat, navigate, removeChat } = this.props;
+
+    // return (
+    //   <div className="chat-list">
+    //     <List className="list">
+    //       { chats.map((chat) => {
+    //         return (
+    //           <div key={ chat.id }>
+    //             <button onClick={ () => navigate(chat.id) } className="list_link" >
+    //               <ListItem style={{ textAlign: "center" }}>
+    //                 <ListItemText primary={ chat.name } />
+    //               </ListItem>
+    //             </button>
+    //             <button onClick={ () => removeChat(chat.id) }>remove</button>
+    //           </div>
+    //         )
+    //       })}
+    //     </List>
+    //     <button onClick={ newChat }>New chat</button>
+    //   </div>
+    // )
+    const { chats, newChat, navigate } = this.props;
 
     return (
       <div className="chat-list">
         <List className="list">
           { chats.map((chat) => {
             return (
-              <Link to={ chat.link } key={ chat.id } className="list_link">
-                <ListItem style={{ textAlign: "center" }}>
-                  <ListItemText primary={ chat.name } />
-                </ListItem>
-              </Link>
+              <div key={ chat.id }>
+                <button onClick={ () => navigate(chat.id) } className="list_link" >
+                  <ListItem style={{ textAlign: "center" }}>
+                    <ListItemText primary={ chat.name } />
+                  </ListItem>
+                </button>
+              </div>
             )
           })}
         </List>

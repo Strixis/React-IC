@@ -18,6 +18,7 @@ module.exports = (_, { mode }) => ({
       actions: path.resolve(__dirname, 'src', 'actions'),
       reducers: path.resolve(__dirname, 'src', 'reducers'),
       containers: path.resolve(__dirname, 'src', 'containers'),
+      middlewares: path.resolve(__dirname, 'src', 'middlewares'),
 
     },
   },
@@ -30,7 +31,7 @@ module.exports = (_, { mode }) => ({
         exclude: /node_modules/,
       },
       {
-        test: /.(less)|(css)$/i,
+        test: /\.(less)|(css)$/i,
         use: [
           mode === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
           'css-loader',

@@ -4,40 +4,25 @@ import React, { Component } from 'react';
 import { ChatList } from 'components/ChatList';
 import { Header } from 'components/Header';
 import { Messanger } from 'components/Messanger';
-// import { Bot } from 'components/Bot';
 
 class Layout extends Component {
-  /* componentDidUpdate() {
-    if (this.messages) {
-      const { chats } = this.state;
-      const { match } = this.props;
-
-      const chat = chats[match.params.id];
-
-      const messages = this.messages;
-      const message = messages[messages.length - 1];
-
-      if (message.author !== 'Bot') {
-        setTimeout(() => {
-          chat.messages = messages.concat(Bot.getAnswer(message));
-
-          this.setState({
-            chats: {
-              ...this.state.chats,
-              [match.params.id]: chat,
-            }
-          })
-        }, 1000);
-      }
-    }
-  } */
   render() {
-    const { chats, messages, chatName, sendMessage, addChat, user } = this.props;
+    // const { chats, messages, chatName, sendMessage, addChat, user, navigate, removeChat } = this.props;
+    // return (
+    //   <div className="main">
+    //     <Header chatName={ chatName } user={ user } />
+    //     <div className="chat-space">
+    //       <ChatList newChat={ addChat } chats={ chats } navigate={ navigate } removeChat={ removeChat } />
+    //       <Messanger onSend={ sendMessage } messages={ messages } />
+    //     </div>
+    //   </div>
+    // )
+    const { chats, messages, chatName, sendMessage, addChat, user, navigate } = this.props;
     return (
       <div className="main">
         <Header chatName={ chatName } user={ user } />
         <div className="chat-space">
-          <ChatList newChat={ addChat } chats={ chats } />
+          <ChatList newChat={ addChat } chats={ chats } navigate={ navigate } />
           <Messanger onSend={ sendMessage } messages={ messages } />
         </div>
       </div>
