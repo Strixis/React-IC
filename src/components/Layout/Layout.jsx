@@ -1,29 +1,20 @@
 import './Layout.less';
 
 import React, { Component } from 'react';
-import { ChatList } from 'components/ChatList';
-import { Header } from 'components/Header';
-import { Messanger } from 'components/Messanger';
+import { ChatListRedux } from 'containers/ChatListContainer';
+import { HeaderRedux } from 'containers/HeaderContainer';
+import { MessangerRedux } from 'containers/MessangerContainer';
 
 class Layout extends Component {
   render() {
-    // const { chats, messages, chatName, sendMessage, addChat, user, navigate, removeChat } = this.props;
-    // return (
-    //   <div className="main">
-    //     <Header chatName={ chatName } user={ user } />
-    //     <div className="chat-space">
-    //       <ChatList newChat={ addChat } chats={ chats } navigate={ navigate } removeChat={ removeChat } />
-    //       <Messanger onSend={ sendMessage } messages={ messages } />
-    //     </div>
-    //   </div>
-    // )
-    const { chats, messages, chatName, sendMessage, addChat, user, navigate } = this.props;
+    const { match } = this.props;
+    
     return (
       <div className="main">
-        <Header chatName={ chatName } user={ user } />
+        <HeaderRedux match={ match } />
         <div className="chat-space">
-          <ChatList newChat={ addChat } chats={ chats } navigate={ navigate } />
-          <Messanger onSend={ sendMessage } messages={ messages } />
+          <ChatListRedux match={ match } />
+          <MessangerRedux match={ match } />
         </div>
       </div>
     )

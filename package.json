@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf dist && webpack --mode production",
-    "dev": "webpack serve --mode development"
+    "dev": "webpack serve --mode development",
+    "serve": "node server/index.js"
   },
   "repository": {
     "type": "git",
@@ -39,8 +40,11 @@
     "@material-ui/icons": "^4.9.1",
     "classnames": "^2.2.6",
     "connected-react-router": "^6.8.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
     "history": "^4.10.1",
     "immutable": "^4.0.0-rc.12",
+    "nedb": "^1.8.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -48,6 +52,9 @@
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
     "redux-actions": "^2.6.5",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "socket.io": "^3.0.4",
+    "socket.io-client": "^3.0.4"
   }
 }

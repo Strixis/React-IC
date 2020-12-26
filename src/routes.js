@@ -1,4 +1,4 @@
-import { LayoutRedux } from 'containers/LayoutContainer';
+import { Layout } from 'components/Layout';
 import { Profile } from 'components/Profile';
 
 import { AboutPage } from 'pages/AboutPage';
@@ -7,7 +7,7 @@ const routes = [
   {
     path: '/',
     exact: true,
-    component: LayoutRedux,
+    component: Layout,
   },
   {
     path: '/about',
@@ -17,7 +17,7 @@ const routes = [
   {
     path: '/chats/:id',
     exact: true,
-    component: LayoutRedux,
+    component: Layout,
   },
   {
     path: '/profile',
