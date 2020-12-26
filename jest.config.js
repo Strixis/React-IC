@@ -67,7 +67,8 @@ module.exports = {
 
   // An array of directory names to be searched recursively up from the requiring module's location
   moduleDirectories: [
-    "node_modules"
+    "node_modules",
+    "src"
   ],
 
   // An array of file extensions your modules use
@@ -78,7 +79,7 @@ module.exports = {
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    "\\.(less)|(css)$": "<rootDir>/__mocks__/styleMocks.js"
+    "\\.(less)|(css)$": "<rootDir>/__mocks__/styleMocks.js",
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader

@@ -20,7 +20,7 @@ test('ChatList should be rendered with 3 .list_link element', () => {
     {name: "Chat 2", id: "2"},
     {name: "chat 3", id: "3"}
   ]} />);
-  const lis = header.find('.list_link');
+  const lis = chatList.find('.list_link');
 
   expect(lis.length).toBe(3);
 });

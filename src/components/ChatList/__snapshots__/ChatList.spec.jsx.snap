@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header should be required 1`] = `
+exports[`ChatList should be required 1`] = `
 <div
   className="chat-list"
 >
