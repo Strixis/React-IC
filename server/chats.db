@@ -1,9 +1,3 @@
-{"name":"Chat 1","messages":[],"_id":"C1YWCW0fNTlj6aGK"}
-{"name":"Chat 2","messages":[],"_id":"xhqIZAH4YfPjRnan"}
-{"name":"Chat 3","messages":[],"_id":"TfztOHMsewd9l3tv"}
-{"name":"Chat 2","messages":[{"author":"V","text":"Hi!"}],"_id":"xhqIZAH4YfPjRnan"}
-{"name":"Chat 2","messages":[{"author":"V","text":"Hi!"},{"chatId":"xhqIZAH4YfPjRnan","author":"Bot","text":"Привет, V! Бот на связи!"}],"_id":"xhqIZAH4YfPjRnan"}
-{"name":"Chat 2","messages":[{"author":"V","text":"Hi!"},{"chatId":"xhqIZAH4YfPjRnan","author":"Bot","text":"Привет, V! Бот на связи!"},{"author":"D","text":"Hello there."}],"_id":"xhqIZAH4YfPjRnan"}
-{"name":"Chat 2","messages":[{"author":"V","text":"Hi!"},{"chatId":"xhqIZAH4YfPjRnan","author":"Bot","text":"Привет, V! Бот на связи!"},{"author":"D","text":"Hello there."},{"chatId":"xhqIZAH4YfPjRnan","author":"Bot","text":"Привет, D! Бот на связи!"}],"_id":"xhqIZAH4YfPjRnan"}
-{"name":"Chat 1","messages":[{"author":"C","text":"This is chat 1."}],"_id":"C1YWCW0fNTlj6aGK"}
 {"name":"Chat 1","messages":[{"author":"C","text":"This is chat 1."},{"chatId":"C1YWCW0fNTlj6aGK","author":"Bot","text":"Привет, C! Бот на связи!"}],"_id":"C1YWCW0fNTlj6aGK"}
+{"name":"Chat 3","messages":[],"_id":"TfztOHMsewd9l3tv"}
+{"name":"Chat 2","messages":[{"author":"V","text":"Hi!"},{"chatId":"xhqIZAH4YfPjRnan","author":"Bot","text":"Привет, V! Бот на связи!"},{"author":"D","text":"Hello there."},{"chatId":"xhqIZAH4YfPjRnan","author":"Bot","text":"Привет, D! Бот на связи!"}],"_id":"xhqIZAH4YfPjRnan"}

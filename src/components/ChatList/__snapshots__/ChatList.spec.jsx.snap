@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChatList should be required 1`] = `
+<div
+  className="chat-list"
+>
+  <ul
+    className="MuiList-root list MuiList-padding"
+  >
+    <div>
+      <button
+        className="list_link "
+        onClick={[Function]}
+      >
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
+        >
+          <div
+            className="MuiListItemText-root"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+            >
+              Chat 1
+            </span>
+          </div>
+        </li>
+      </button>
+      <button
+        onClick={[Function]}
+      >
+        X
+      </button>
+    </div>
+    <div>
+      <button
+        className="list_link "
+        onClick={[Function]}
+      >
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
+        >
+          <div
+            className="MuiListItemText-root"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+            >
+              Chat 2
+            </span>
+          </div>
+        </li>
+      </button>
+      <button
+        onClick={[Function]}
+      >
+        X
+      </button>
+    </div>
+    <div>
+      <button
+        className="list_link "
+        onClick={[Function]}
+      >
+        <li
+          className="MuiListItem-root MuiListItem-gutters"
+          disabled={false}
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
+        >
+          <div
+            className="MuiListItemText-root"
+          >
+            <span
+              className="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+            >
+              chat 3
+            </span>
+          </div>
+        </li>
+      </button>
+      <button
+        onClick={[Function]}
+      >
+        X
+      </button>
+    </div>
+  </ul>
+  <button>
+    New chat
+  </button>
+</div>
+`;
