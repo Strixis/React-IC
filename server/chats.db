@@ -1,0 +1,9 @@
+{"name":"Chat 1","messages":[],"_id":"tS5SVap36odW4e03"}
+{"name":"Chat 2","messages":[],"_id":"z170ArvIWVoED55f"}
+{"name":"Chat 3","messages":[],"_id":"NLk3lhHBaNXXU3m4"}
+{"name":"Chat 1","messages":[{"author":"V","text":"Hi!"}],"_id":"tS5SVap36odW4e03"}
+{"name":"Chat 1","messages":[{"author":"V","text":"Hi!"},{"chatId":"tS5SVap36odW4e03","author":"Bot","text":"Привет, V! Бот на связи!"}],"_id":"tS5SVap36odW4e03"}
+{"name":"Chat 2","messages":[{"author":"D","text":"Hello!"}],"_id":"z170ArvIWVoED55f"}
+{"name":"Chat 2","messages":[{"author":"D","text":"Hello!"},{"chatId":"z170ArvIWVoED55f","author":"Bot","text":"Привет, D! Бот на связи!"}],"_id":"z170ArvIWVoED55f"}
+{"name":"Chat 2","messages":[{"author":"D","text":"Hello!"},{"chatId":"z170ArvIWVoED55f","author":"Bot","text":"Привет, D! Бот на связи!"},{"author":"V","text":"Hello."}],"_id":"z170ArvIWVoED55f"}
+{"name":"Chat 2","messages":[{"author":"D","text":"Hello!"},{"chatId":"z170ArvIWVoED55f","author":"Bot","text":"Привет, D! Бот на связи!"},{"author":"V","text":"Hello."},{"chatId":"z170ArvIWVoED55f","author":"Bot","text":"Привет, V! Бот на связи!"}],"_id":"z170ArvIWVoED55f"}

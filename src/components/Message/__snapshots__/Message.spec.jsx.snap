@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Message should be required 1`] = `
+<li
+  className="message message_owner"
+>
+  <span
+    className="message_author"
+  >
+    Test Author
+  </span>
+  <span
+    className="message_text"
+  />
+</li>
+`;

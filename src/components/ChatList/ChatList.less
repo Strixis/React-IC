@@ -1,0 +1,38 @@
+.chat-list {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.list {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  &_link {
+    display: block;
+    background-color: aliceblue;
+    border-radius: 30px;
+    margin: 10px 0;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.blink {
+  animation-name: blink;
+  animation-duration: .75s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+  from {
+    background-color: aquamarine;
+  }
+  to {
+    background-color: aliceblue;
+  }
+}
