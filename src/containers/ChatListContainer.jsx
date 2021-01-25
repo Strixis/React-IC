@@ -7,9 +7,9 @@ import { listen, createChat, removeChat } from 'actions/chats';
 
 class ChatListContainer extends PureComponent {
   componentDidMount() {
-    const { listenChat } = this.props;
+    const { listenChat, chats } = this.props;
 
-    listenChat();
+    if (!chats.length) listenChat();
   }
 
   handleNewChat = () => {
